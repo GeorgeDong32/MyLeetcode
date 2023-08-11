@@ -4,6 +4,7 @@
 #忽略证书
 *.fpx
 #忽略文件夹
+.vscode
 .vs
 x64/
 Debug/

@@ -1,37 +1,27 @@
-﻿/*Q94*/
-
-
-public class TreeNode
-{
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
-    public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-    {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-}
+﻿/*Q118*/
 
 public class Solution
 {
-    public IList<int> InorderTraversal(TreeNode root)
+    public IList<IList<int>> Generate(int numRows)
     {
-        var result = new List<int>();
-        var stack = new Stack<TreeNode>();
-        var current = root;
-        while (current != null || stack.Count > 0)
+        if (numRows == 0)
+            return null;
+        if (numRows == 1)
+            return new List<IList<int>> { new List<int> { 1 } };
+        else
         {
-            while (current != null)
+            var result = new List<IList<int>> { new List<int> { 1 } };
+            for (int i = 1; i < numRows; i++)
             {
-                stack.Push(current);
-                current = current.left;
+                var temp = new List<int> { 1 };
+                for (int j = 1; j < i; j++)
+                {
+                    temp.Add(result[i - 1][j - 1] + result[i - 1][j]);
+                }
+                temp.Add(1);
+                result.Add(temp);
             }
-            current = stack.Pop();
-            result.Add(current.val);
-            current = current.right;
+            return result;
         }
-        return result;
     }
 }

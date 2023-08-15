@@ -1,14 +1,25 @@
-﻿/*Q136*/
+﻿/*Q168*/
+using System.Text;
+
+var sol = new Solution();
+Console.WriteLine(sol.ConvertToTitle(26));
 
 public class Solution
 {
-    public int SingleNumber(int[] nums)
+    public string ConvertToTitle(int columnNumber)
     {
-        var res = 0;
-        for (int i = 0; i < nums.Length; i++)
+        StringBuilder sb = new StringBuilder();
+        while (columnNumber > 0)
         {
-            res = res ^ nums[i];
+            int a0 = (columnNumber - 1) % 26 + 1;
+            sb.Append((char)(a0 - 1 + 'A'));
+            columnNumber = (columnNumber - a0) / 26;
         }
-        return res;
+        StringBuilder columnTitle = new StringBuilder();
+        for (int i = sb.Length - 1; i >= 0; i--)
+        {
+            columnTitle.Append(sb[i]);
+        }
+        return columnTitle.ToString();
     }
 }

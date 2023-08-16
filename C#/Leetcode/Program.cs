@@ -1,25 +1,27 @@
-﻿/*Q168*/
-using System.Text;
-
+﻿/*Q169*/
 var sol = new Solution();
-Console.WriteLine(sol.ConvertToTitle(26));
 
 public class Solution
 {
-    public string ConvertToTitle(int columnNumber)
+    public int MajorityElement(int[] nums)
     {
-        StringBuilder sb = new StringBuilder();
-        while (columnNumber > 0)
+        var maj = nums[0];
+        var count = 0;
+        for (var i = 1; i < nums.Length; i++)
         {
-            int a0 = (columnNumber - 1) % 26 + 1;
-            sb.Append((char)(a0 - 1 + 'A'));
-            columnNumber = (columnNumber - a0) / 26;
+            if (nums[i] == maj)
+            {
+                count++;
+            }
+            else if (count == 0)
+            {
+                maj = nums[i];
+            }
+            else
+            {
+                count--;
+            }
         }
-        StringBuilder columnTitle = new StringBuilder();
-        for (int i = sb.Length - 1; i >= 0; i--)
-        {
-            columnTitle.Append(sb[i]);
-        }
-        return columnTitle.ToString();
+        return maj;
     }
 }

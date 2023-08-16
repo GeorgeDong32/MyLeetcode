@@ -1,27 +1,17 @@
-﻿/*Q169*/
+﻿/*Q171*/
 var sol = new Solution();
 
 public class Solution
 {
-    public int MajorityElement(int[] nums)
+    public int TitleToNumber(string columnTitle)
     {
-        var maj = nums[0];
-        var count = 0;
-        for (var i = 1; i < nums.Length; i++)
+        var l = columnTitle.Length;
+        var res = 0;
+        for (var i = 0; i < l; i++)
         {
-            if (nums[i] == maj)
-            {
-                count++;
-            }
-            else if (count == 0)
-            {
-                maj = nums[i];
-            }
-            else
-            {
-                count--;
-            }
+            int num = (int)(columnTitle[i] - 'A') + 1;
+            res += num * (int)Math.Pow(26, l - i - 1);
         }
-        return maj;
+        return res;
     }
 }

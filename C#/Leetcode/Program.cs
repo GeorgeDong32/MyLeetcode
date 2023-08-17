@@ -1,16 +1,16 @@
-﻿/*Q190*/
+﻿/*Q191*/
 var sol = new Solution();
 
 public class Solution
 {
-    public uint reverseBits(uint n)
+    public int HammingWeight(uint n)
     {
-        uint rev = 0;
-        for (int i = 0, j = 31; i < 32; i++, j--)
+        uint res = 0;
+        while (n != 0)
         {
-            uint bit = (n >> i) & 1;
-            rev |= bit << j;
+            res += (n & 1);
+            n >>= 1;
         }
-        return rev;
+        return (int)res;
     }
 }

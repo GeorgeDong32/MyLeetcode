@@ -1,17 +1,16 @@
-﻿/*Q171*/
+﻿/*Q190*/
 var sol = new Solution();
 
 public class Solution
 {
-    public int TitleToNumber(string columnTitle)
+    public uint reverseBits(uint n)
     {
-        var l = columnTitle.Length;
-        var res = 0;
-        for (var i = 0; i < l; i++)
+        uint rev = 0;
+        for (int i = 0, j = 31; i < 32; i++, j--)
         {
-            int num = (int)(columnTitle[i] - 'A') + 1;
-            res += num * (int)Math.Pow(26, l - i - 1);
+            uint bit = (n >> i) & 1;
+            rev |= bit << j;
         }
-        return res;
+        return rev;
     }
 }

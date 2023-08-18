@@ -1,29 +1,46 @@
-﻿/*Q202*/
+﻿/*Q203*/
 var sol = new Solution();
+
+public class ListNode
+{
+    public int val;
+    public ListNode next;
+    public ListNode(int val = 0, ListNode next = null)
+    {
+        this.val = val;
+        this.next = next;
+    }
+}
 
 public class Solution
 {
-    public bool IsHappy(int n)
+    public ListNode RemoveElements(ListNode head, int val)
     {
-        HashSet<int> cycleMembers =
-            new HashSet<int>(new int[8] { 4, 16, 37, 58, 89, 145, 42, 20 });
-
-        while (n != 1 && !cycleMembers.Contains(n))
+        var current = head;
+        ListNode last = null;
+        while (current != null)
         {
-            n = GetNext(n);
+            if (current.val == val)
+            {
+                if (current != head)
+                {
+                    last.next = current.next;
+                    current = current.next;
+                    last = last;
+                }
+                else
+                {
+                    head = current.next;
+                    current = current.next;
+                    last = null;
+                }
+            }
+            else
+            {
+                last = current;
+                current = current.next;
+            }
         }
-        return n == 1;
-    }
-
-    public int GetNext(int n)
-    {
-        var result = 0;
-        while (n > 0)
-        {
-            int d = n % 10;
-            n /= 10;
-            result += d * d;
-        }
-        return result;
+        return head;
     }
 }

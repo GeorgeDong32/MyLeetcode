@@ -1,18 +1,15 @@
-﻿/*Q263*/
+﻿/*Q268*/
 var sol = new Solution();
 
 public class Solution
 {
-    public bool IsUgly(int n)
+    public int MissingNumber(int[] nums)
     {
-        if (n < 1)
-            return false;
-        while (n % 2 == 0)
-            n /= 2;
-        while (n % 3 == 0)
-            n /= 3;
-        while (n % 5 == 0)
-            n /= 5;
-        return n == 1;
+        var tarsum = 0;
+        for (int i = 0; i <= nums.Length; i++)
+        {
+            tarsum += i;
+        }
+        return tarsum - nums.Sum();
     }
 }

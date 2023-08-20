@@ -1,12 +1,18 @@
-﻿/*Q258*/
+﻿/*Q263*/
 var sol = new Solution();
 
 public class Solution
 {
-    public int AddDigits(int num)
+    public bool IsUgly(int n)
     {
-        if (num == 0)
-            return 0;
-        else return (num % 9 == 0) ? 9 : num % 9;
+        if (n < 1)
+            return false;
+        while (n % 2 == 0)
+            n /= 2;
+        while (n % 3 == 0)
+            n /= 3;
+        while (n % 5 == 0)
+            n /= 5;
+        return n == 1;
     }
 }

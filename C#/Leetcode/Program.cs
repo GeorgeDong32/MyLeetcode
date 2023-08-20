@@ -1,26 +1,11 @@
-﻿/*Q219*/
+﻿/*Q231*/
 var sol = new Solution();
+Console.WriteLine(sol.IsPowerOfTwo(8));
 
 public class Solution
 {
-    public bool ContainsNearbyDuplicate(int[] nums, int k)
+    public bool IsPowerOfTwo(int n)
     {
-        Dictionary<int, int> d = new Dictionary<int, int>();
-        for (int i = 0; i < nums.Length; i++)
-        {
-            if (d.ContainsKey(nums[i]) && i - d[nums[i]] <= k)
-            {
-                return true;
-            }
-            if (d.ContainsKey(nums[i]))
-            {
-                d[nums[i]] = i;
-            }
-            else
-            {
-                d.Add(nums[i], i);
-            }
-        }
-        return false;
+        return n > 0 && (n & (n - 1)) == 0;
     }
 }

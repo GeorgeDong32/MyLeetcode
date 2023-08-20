@@ -5,11 +5,8 @@ public class Solution
 {
     public int MissingNumber(int[] nums)
     {
-        var tarsum = 0;
-        for (int i = 0; i <= nums.Length; i++)
-        {
-            tarsum += i;
-        }
+        int n = nums.Length;
+        var tarsum = n * (n + 1) / 2;
         return tarsum - nums.Sum();
     }
 }

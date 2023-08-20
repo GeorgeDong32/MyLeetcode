@@ -1,23 +1,12 @@
-﻿/*Q242*/
+﻿/*Q258*/
 var sol = new Solution();
 
 public class Solution
 {
-    public bool IsAnagram(string s, string t)
+    public int AddDigits(int num)
     {
-        if (s.Length != t.Length)
-            return false;
-        var count = new int[26];
-        for (int i = 0; i < s.Length; i++)
-        {
-            count[s[i] - 'a']++;
-            count[t[i] - 'a']--;
-        }
-        for (int i = 0; i < count.Length; i++)
-        {
-            if (count[i] != 0)
-                return false;
-        }
-        return true;
+        if (num == 0)
+            return 0;
+        else return (num % 9 == 0) ? 9 : num % 9;
     }
 }

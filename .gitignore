@@ -272,3 +272,4 @@ fabric.properties
 
 SigningCertificate_Encoded.txt
 *.pfx
+*.code-workspace

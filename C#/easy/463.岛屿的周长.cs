@@ -19,8 +19,9 @@ public class Solution
         {
             for (int j = 0; j < n; j++)
             {
-                if (grid[i][j] == 1)
-                    count++;
+                if (grid[i][j] == 0)
+                    continue;
+                count++;
                 if (j + 1 < n && grid[i][j + 1] == 1)
                     near++;
                 if (i + 1 < m && grid[i + 1][j] == 1)

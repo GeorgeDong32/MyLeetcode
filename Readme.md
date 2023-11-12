@@ -1,3 +1,3 @@
 # MyLeetcode
 
-My Leetcode solutions
+My Leetcode solutions.

@@ -274,3 +274,5 @@ fabric.properties
 SigningCertificate_Encoded.txt
 *.pfx
 *.code-workspace
+C#/Leetcode/.lcpr_data/group.json
+C#/Leetcode/.lcpr_data/bricks.json

@@ -14,10 +14,11 @@ public class Solution
 {
     public bool IsThree(int n)
     {
-        var table = new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 };
-        foreach (var x in table)
+
+        var pool = new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 };
+        foreach (var p in pool)
         {
-            if (x * x == n)
+            if (p * p == n)
                 return true;
         }
         return false;

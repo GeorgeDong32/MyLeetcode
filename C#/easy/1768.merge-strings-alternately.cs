@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=1768 lang=csharp
- * @lcpr version=30116
+ * @lcpr version=30122
  *
  * [1768] 交替合并字符串
  */
@@ -16,22 +16,22 @@ public class Solution
 {
     public string MergeAlternately(string word1, string word2)
     {
-        var ans = new StringBuilder();
-        var ml = Math.Min(word1.Length, word2.Length);
-        for (var i = 0; i < ml; i++)
+        var sb = new StringBuilder();
+        var i = 0;
+        for (i = 0; i < word1.Length && i < word2.Length; i++)
         {
-            ans.Append(word1[i]);
-            ans.Append(word2[i]);
+            sb.Append(word1[i]);
+            sb.Append(word2[i]);
         }
-        if (word1.Length > word2.Length)
+        if (i == word1.Length)
         {
-            ans.Append(word1.Substring(ml, word1.Length - ml));
+            sb.Append(word2.Substring(i, word2.Length - word1.Length));
         }
         else
         {
-            ans.Append(word2.Substring(ml, word2.Length - ml));
+            sb.Append(word1.Substring(i, word1.Length - word2.Length));
         }
-        return ans.ToString();
+        return sb.ToString();
     }
 }
 // @lc code=end

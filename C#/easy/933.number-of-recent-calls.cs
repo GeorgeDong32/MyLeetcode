@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=933 lang=csharp
- * @lcpr version=30117
+ * @lcpr version=30122
  *
  * [933] 最近的请求次数
  */
@@ -12,7 +12,7 @@
 // @lc code=start
 public class RecentCounter
 {
-    Queue<int> requests;
+    private Queue<int> requests;
     public RecentCounter()
     {
         requests = new Queue<int>();
@@ -21,7 +21,7 @@ public class RecentCounter
     public int Ping(int t)
     {
         requests.Enqueue(t);
-        while (requests.Peek() < t - 3000)
+        while (requests.Count > 0 && requests.Peek() > t - 3000)
         {
             requests.Dequeue();
         }

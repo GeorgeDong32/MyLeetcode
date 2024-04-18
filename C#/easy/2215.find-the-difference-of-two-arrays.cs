@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=2215 lang=csharp
- * @lcpr version=30116
+ * @lcpr version=30122
  *
  * [2215] 找出两数组的不同
  */
@@ -14,11 +14,23 @@ public class Solution
 {
     public IList<IList<int>> FindDifference(int[] nums1, int[] nums2)
     {
-        var ans = new List<IList<int>>
+        var dict1 = new HashSet<int>(nums1);
+        var dict2 = new HashSet<int>(nums2);
+        var ans = new List<IList<int>>();
+        var a0 = new HashSet<int>();
+        var a1 = new HashSet<int>();
+        foreach (var n in nums1)
         {
-            nums1.Except(nums2).ToList(),
-            nums2.Except(nums1).ToList()
-        };
+            if (!dict2.Contains(n))
+                a0.Add(n);
+        }
+        foreach (var n in nums2)
+        {
+            if (!dict1.Contains(n))
+                a1.Add(n);
+        }
+        ans.Add(a0.ToList());
+        ans.Add(a1.ToList());
         return ans;
     }
 }

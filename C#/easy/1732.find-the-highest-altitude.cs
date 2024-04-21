@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=1732 lang=csharp
- * @lcpr version=30116
+ * @lcpr version=30122
  *
  * [1732] 找到最高海拔
  */
@@ -14,12 +14,14 @@ public class Solution
 {
     public int LargestAltitude(int[] gain)
     {
-        var alt = new int[gain.Length + 1];
-        for (var i = 0; i < gain.Length; i++)
+        var l = gain.Length;
+        var prefix = new int[l + 1];
+        prefix[0] = 0;
+        for (var i = 0; i < l; i++)
         {
-            alt[i + 1] = alt[i] + gain[i];
+            prefix[i + 1] = prefix[i] + gain[i];
         }
-        return alt.Max();
+        return prefix.Max();
     }
 }
 // @lc code=end

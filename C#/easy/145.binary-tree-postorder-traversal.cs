@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=94 lang=csharp
+ * @lc app=leetcode.cn id=145 lang=csharp
  * @lcpr version=30201
  *
- * [94] 二叉树的中序遍历
+ * [145] 二叉树的后序遍历
  */
 
 
@@ -24,7 +24,7 @@
 // }
 public class Solution
 {
-    public IList<int> InorderTraversal(TreeNode root)
+    public IList<int> PostorderTraversal(TreeNode root)
     {
         var ans = new List<int>();
         Traversal(root, ans);
@@ -36,8 +36,8 @@ public class Solution
         if (root == null)
             return;
         Traversal(root.left, res);
-        res.Add(root.val);
         Traversal(root.right, res);
+        res.Add(root.val);
     }
 }
 // @lc code=end

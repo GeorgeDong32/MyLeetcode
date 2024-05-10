@@ -1,8 +1,8 @@
 /*
- * @lc app=leetcode.cn id=429 lang=csharp
+ * @lc app=leetcode.cn id=116 lang=csharp
  * @lcpr version=30201
  *
- * [429] N 叉树的层序遍历
+ * [116] 填充每个节点的下一个右侧节点指针
  */
 
 
@@ -15,7 +15,9 @@
 // public class Node
 // {
 //     public int val;
-//     public IList<Node> children;
+//     public Node left;
+//     public Node right;
+//     public Node next;
 
 //     public Node() { }
 
@@ -24,40 +26,41 @@
 //         val = _val;
 //     }
 
-//     public Node(int _val, IList<Node> _children)
+//     public Node(int _val, Node _left, Node _right, Node _next)
 //     {
 //         val = _val;
-//         children = _children;
+//         left = _left;
+//         right = _right;
+//         next = _next;
 //     }
 // }
 
 
 public class Solution
 {
-    public IList<IList<int>> LevelOrder(Node root)
+    public Node Connect(Node root)
     {
         var q = new Queue<Node>();
-        var ans = new List<IList<int>>();
         if (root != null)
             q.Enqueue(root);
         while (q.Count > 0)
         {
-            var list = new List<int>();
             var size = q.Count;
             while (size > 0)
             {
                 var temp = q.Dequeue();
-                list.Add(temp.val);
-                foreach (var child in temp.children)
-                {
-                    if (child != null)
-                        q.Enqueue(child);
-                }
+                if (size == 1)
+                    temp.next = null;
+                else
+                    temp.next = q.Peek();
+                if (temp.left != null)
+                    q.Enqueue(temp.left);
+                if (temp.right != null)
+                    q.Enqueue(temp.right);
                 size--;
             }
-            ans.Add(list);
         }
-        return ans;
+        return root;
     }
 }
 // @lc code=end
@@ -66,11 +69,11 @@ public class Solution
 
 /*
 // @lcpr case=start
-// [1,null,3,2,4,null,5,6]\n
+// [1,2,3,4,5,6,7]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\n
+// []\n
 // @lcpr case=end
 
  */

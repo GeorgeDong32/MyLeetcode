@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=102 lang=csharp
- * @lcpr version=30116
+ * @lcpr version=30201
  *
  * [102] 二叉树的层序遍历
  */
@@ -10,57 +10,44 @@
 
 // @lcpr-template-end
 // @lc code=start
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     public int val;
- *     public TreeNode left;
- *     public TreeNode right;
- *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+// public class TreeNode
+// {
+//     public int val;
+//     public TreeNode left;
+//     public TreeNode right;
+//     public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+//     {
+//         this.val = val;
+//         this.left = left;
+//         this.right = right;
+//     }
+// }
+
 public class Solution
 {
     public IList<IList<int>> LevelOrder(TreeNode root)
     {
-        var result = new List<IList<int>>();
-        if (root == null)
+        var q = new Queue<TreeNode>();
+        var ans = new List<IList<int>>();
+        if (root != null)
+            q.Enqueue(root);
+        while (!(q.Count == 0))
         {
-            return result;
-        }
-
-        var queue = new Queue<TreeNode>();
-        queue.Enqueue(root);
-
-        while (queue.Count > 0)
-        {
-            var level = new List<int>();
-            int size = queue.Count;
-
-            for (int i = 0; i < size; i++)
+            var list = new List<int>();
+            var size = q.Count;
+            while (size > 0)
             {
-                var node = queue.Dequeue();
-                level.Add(node.val);
-
-                if (node.left != null)
-                {
-                    queue.Enqueue(node.left);
-                }
-
-                if (node.right != null)
-                {
-                    queue.Enqueue(node.right);
-                }
+                var cur = q.Dequeue();
+                list.Add(cur.val);
+                if (cur.left != null)
+                    q.Enqueue(cur.left);
+                if (cur.right != null)
+                    q.Enqueue(cur.right);
+                size--;
             }
-
-            result.Add(level);
+            ans.Add(list);
         }
-
-        return result;
+        return ans;
     }
 }
 // @lc code=end

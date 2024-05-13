@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=232 lang=csharp
- * @lcpr version=30118
+ * @lcpr version=30201
  *
  * [232] 用栈实现队列
  */
@@ -49,7 +49,6 @@ public class MyQueue
         return input.Count == 0 && output.Count == 0;
     }
 }
-
 /**
  * Your MyQueue object will be instantiated and called as such:
  * MyQueue obj = new MyQueue();

@@ -1,6 +1,6 @@
 /*
  * @lc app=leetcode.cn id=225 lang=csharp
- * @lcpr version=30118
+ * @lcpr version=30201
  *
  * [225] 用队列实现栈
  */
@@ -12,39 +12,39 @@
 // @lc code=start
 public class MyStack
 {
-    Queue<int> q1;
-    Queue<int> q2;
+    private Queue<int> q1;
+    private Queue<int> q2;
+
     public MyStack()
     {
-        q1 = new Queue<int>();
-        q2 = new Queue<int>();
+        q1 = new();
+        q2 = new();
     }
 
     public void Push(int x)
     {
-        q2.Enqueue(x);
-        while (q1.Count > 0)
+        q1.Enqueue(x);
+        while (q2.Count > 0)
         {
-            q2.Enqueue(q1.Dequeue());
+            q1.Enqueue(q2.Dequeue());
         }
         SwapQueue(ref q1, ref q2);
     }
 
     public int Pop()
     {
-        return q1.Dequeue();
+        return q2.Dequeue();
     }
 
     public int Top()
     {
-        return q1.Peek();
+        return q2.Peek();
     }
 
     public bool Empty()
     {
-        return q1.Count == 0;
+        return q2.Count == 0;
     }
-
     private void SwapQueue(ref Queue<int> q1, ref Queue<int> q2)
     {
         var temp = q1;
